@@ -1,0 +1,38 @@
+// Количество пар. Расстояние не более 5, а произведение кратно 3
+
+#include <iostream>
+
+using namespace std;
+
+int main(int argc, char** argv) {
+	int n;
+	cin >> n;
+
+	int a[5];
+	int buf;
+	int s=0;
+	int k=0;
+	for (int i=0;i<5;++i){
+		cin >> a[i];
+		if(a[i]%3==0){
+			++k;
+			s+=5-k;
+		}
+	}
+	for (int i=5; i<n;++i){
+		cin>>buf;
+		if(a[i%5]%3==0){
+			k--;
+		}
+		if (buf%3==0){
+			++k;
+			s+=4;
+		} else {
+			s+=k;
+		}
+		a[i%5]=buf;
+	}
+	cout<<s<<endl;
+	system("pause");
+	return 0;
+}
